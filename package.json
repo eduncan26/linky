@@ -1,0 +1,19 @@
+{
+  "name": "linky",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eduncan26/linky.git"
+  },
+  "author": "Evan Duncan <evan.e.duncan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eduncan26/linky/issues"
+  },
+  "homepage": "https://github.com/eduncan26/linky#readme"
+}
