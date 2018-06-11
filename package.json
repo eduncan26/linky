@@ -1,21 +1,21 @@
 {
   "name": "linky",
   "version": "1.0.0",
-  "description": "",
+  "description": "Linked lists for JS, and other data structures that build on them.",
   "main": "index.js",
   "scripts": {
     "test": "mocha src/**/*.spec.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/eduncan26/linky.git"
+    "url": "git+ssh://git@github.com/evan-duncan/linky.git"
   },
   "author": "Evan Duncan <evan.e.duncan@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/eduncan26/linky/issues"
+    "url": "https://github.com/evan-duncan/linky/issues"
   },
-  "homepage": "https://github.com/eduncan26/linky#readme",
+  "homepage": "https://github.com/evan-duncan/linky#readme",
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^5.2.0"
