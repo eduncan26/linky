@@ -18,7 +18,7 @@ class List {
 
   /**
    * @param i {*} Data to add to the List
-   * @return {Node}
+   * @return {Void}
    */
   add(i) {
     const node = new Node(i);
@@ -33,8 +33,6 @@ class List {
       this.last.previous = prev;
       this._length++
     }
-
-    return node;
   }
 
   /**
