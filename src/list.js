@@ -1,18 +1,21 @@
+'use strict';
 const Node = require('./node');
 
 class List {
-  constructor(args, ...rest) {
+  constructor() {
     this._length = 0;
     this.head = null;
     this.last = null;
 
-    if (args && Array.isArray(args)) {
-      args.forEach(this.add.bind(this));
-    }
-
-    if (args && !Array.isArray(args)) {
-      this.add(args);
-      rest.forEach(this.add.bind(this));
+    if (arguments.length) {
+      for (let i = 0; i < arguments.length; i++) {
+        const arg = arguments[i];
+        if (Array.isArray(arg)) {
+          arg.forEach(this.add.bind(this));
+        } else {
+          this.add(arg);
+        }
+      }
     }
   }
 

@@ -4,7 +4,9 @@
   "description": "Linked lists for JS, and other data structures that build on them.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha src/**/*.spec.js"
+    "test": "mocha src/**/*.spec.js",
+    "test:coverage": "nyc npm test",
+    "test:all": "testen"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,16 @@
   "homepage": "https://github.com/evan-duncan/linky#readme",
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "testen": "^2.2.1"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js"
+    ]
+  },
+  "testen": {
+    "node": ["4", "5", "6", "7", "8", "9", "10"]
   }
 }

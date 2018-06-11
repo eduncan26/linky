@@ -1,3 +1,4 @@
+'use strict';
 const List = require('./list');
 
 class Queue {

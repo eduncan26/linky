@@ -1,4 +1,5 @@
-const { expect } = require('chai');
+'use strict';
+const expect = require('chai').expect;
 const Queue = require('./queue');
 
 describe('Queue', () => {

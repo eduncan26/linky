@@ -1,4 +1,5 @@
-const { expect } = require('chai');
+'use strict';
+const expect = require('chai').expect;
 const List = require('./list');
 
 let l = null;
@@ -76,5 +77,20 @@ describe('List', () => {
       expect(item).to.equal('foo'));
     it('should reduce the length', () =>
       expect(l.length()).to.equal(1));
+  });
+
+  describe('#findNodeAt', () => {
+    it('should find a node at the head', () => {
+      expect(l.findNodeAt(0)).to.equal('foo');
+    });
+
+    it('should find a node at the end', () => {
+      expect(l.findNodeAt(l.length())).to.equal('bar');
+    });
+
+    it('should find a node in the middle', () => {
+      l.add('baz');
+      expect(l.findNodeAt(Math.ceil(l.length() / 2))).to.equal('bar');
+    });
   });
 });
