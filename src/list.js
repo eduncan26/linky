@@ -18,7 +18,7 @@ class List {
 
   /**
    * @param i {*} Data to add to the List
-   * @return {Void}
+   * @return {void}
    */
   add(i) {
     const node = new Node(i);
