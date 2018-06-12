@@ -54,7 +54,16 @@
   "nyc": {
     "exclude": [
       "**/*.spec.js"
-    ]
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "testen": {
     "node": [
