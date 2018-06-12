@@ -2,13 +2,23 @@
   "name": "linky",
   "version": "1.0.0",
   "description": "Linked lists for JS, and other data structures that build on them.",
+  "keywords": [
+    "linked",
+    "list",
+    "linked list",
+    "stack",
+    "queue",
+    "data",
+    "structure",
+    "data structure"
+  ],
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "babel src -d lib --ignore *.spec.js",
     "lint": "eslint src/**/*.js",
     "test": "mocha src/**/*.spec.js --require babel-polyfill --require babel-register",
-    "test:coverage": "nyc npm test",
+    "test:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "test:all": "testen"
   },
   "repository": {
@@ -29,11 +39,13 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-mocha": "^5.0.0",
     "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^12.0.2",
     "testen": "^2.2.1"
   },
