@@ -1,7 +1,6 @@
-'use strict';
-const List = require('./list');
+import List from './list';
 
-class Stack {
+export default class Stack {
   constructor() {
     this.list = new List();
   }
@@ -22,5 +21,3 @@ class Stack {
     return this.list.pop();
   }
 }
-
-module.exports = Stack;

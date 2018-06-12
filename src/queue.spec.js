@@ -1,6 +1,5 @@
-'use strict';
-const expect = require('chai').expect;
-const Queue = require('./queue');
+import { expect } from 'chai';
+import { Queue } from '.';
 
 describe('Queue', () => {
   describe('#enqueue', () => {
@@ -19,5 +18,5 @@ describe('Queue', () => {
       q.enqueue('bar');
       expect(q.dequeue()).to.equal('foo');
     });
-  })
+  });
 });

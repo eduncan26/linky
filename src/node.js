@@ -1,5 +1,4 @@
-'use strict';
-class Node {
+export default class Node {
   /**
    * @constructor
    * @param data {*}
@@ -10,5 +9,3 @@ class Node {
     this.previous = null;
   }
 }
-
-module.exports = Node;

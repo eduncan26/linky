@@ -1,7 +1,6 @@
-'use strict';
-const List = require('./list');
+import List from './list';
 
-class Queue {
+export default class Queue {
   constructor() {
     this.list = new List();
   }
@@ -14,5 +13,3 @@ class Queue {
     return this.list.shift();
   }
 }
-
-module.exports = Queue;

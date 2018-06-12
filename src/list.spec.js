@@ -1,6 +1,5 @@
-'use strict';
-const expect = require('chai').expect;
-const List = require('./list');
+import { expect } from 'chai';
+import { List } from '.';
 
 let l = null;
 describe('List', () => {
@@ -10,23 +9,22 @@ describe('List', () => {
     l.add('bar');
   });
 
-
   describe('@@iterator', () => {
     it('should respond to for ... of', () => {
       try {
-        for (let value of l) {
-          expect(value).to.not.be.undefined;
+        for (const value of l) { // eslint-disable-line no-restricted-syntax
+          expect(value).to.not.be.undefined; // eslint-disable-line no-unused-expressions
         }
       } catch (error) {
-        expect(error).to.be.undefined;
+        expect(error).to.be.undefined; // eslint-disable-line no-unused-expressions
       }
     });
 
     it('should iterate over all children', () => {
       const len = l.length();
       let idx = 0;
-      for (let value of l) {
-        idx++;
+      for (const _ of l) { // eslint-disable-line no-restricted-syntax,no-unused-vars
+        idx += 1;
       }
       expect(idx).to.equal(len);
     });
@@ -61,7 +59,7 @@ describe('List', () => {
 
   describe('#pop', () => {
     let item = null;
-    beforeEach(() => item = l.pop());
+    beforeEach(() => { item = l.pop(); });
     it('should return the last item of the list', () =>
       expect(item).to.equal('bar'));
     it('should reduce the length', () =>
@@ -72,7 +70,7 @@ describe('List', () => {
 
   describe('#shift', () => {
     let item = null;
-    beforeEach(() => item = l.shift());
+    beforeEach(() => { item = l.shift(); });
     it('should return the first item of the list', () =>
       expect(item).to.equal('foo'));
     it('should reduce the length', () =>
@@ -92,5 +90,8 @@ describe('List', () => {
       l.add('baz');
       expect(l.findNodeAt(Math.ceil(l.length() / 2))).to.equal('bar');
     });
+
+    it('should return false if an index cannot be found', () =>
+      expect(l.findNodeAt(-1)).to.be.false);
   });
 });

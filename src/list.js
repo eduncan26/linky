@@ -1,22 +1,18 @@
-'use strict';
-const Node = require('./node');
+import Node from './node';
 
-class List {
-  constructor() {
-    this._length = 0;
+export default class List {
+  constructor(...args) {
+    this.len = 0;
     this.head = null;
     this.last = null;
 
-    if (arguments.length) {
-      for (let i = 0; i < arguments.length; i++) {
-        const arg = arguments[i];
-        if (Array.isArray(arg)) {
-          arg.forEach(this.add.bind(this));
-        } else {
-          this.add(arg);
-        }
+    args.forEach((arg) => {
+      if (Array.isArray(arg)) {
+        arg.forEach(this.add.bind(this));
+      } else {
+        this.add(arg);
       }
-    }
+    });
   }
 
   /**
@@ -28,13 +24,13 @@ class List {
     if (!this.head) {
       this.head = node;
       this.last = node;
-      this._length++;
+      this.len += 1;
     } else {
       const prev = this.last;
       this.last.next = node;
       this.last = node;
       this.last.previous = prev;
-      this._length++
+      this.len += 1;
     }
   }
 
@@ -43,7 +39,7 @@ class List {
    * @return {number}
    */
   length() {
-    return this._length;
+    return this.len;
   }
 
   /**
@@ -54,13 +50,12 @@ class List {
     if (!this.last) {
       return undefined;
     }
-    const data = this.last.data;
-    const prev = this.last.previous;
-    if (prev) {
-      prev.next = null;
+    const { data, previous } = this.last;
+    if (previous) {
+      previous.next = null;
     }
-    this.last = prev;
-    this._length--;
+    this.last = previous;
+    this.len -= 1;
     return data;
   }
 
@@ -69,10 +64,10 @@ class List {
    * @return {*}
    */
   shift() {
-    const head = this.head;
-    this.head = head.next;
-    this._length--;
-    return head.data;
+    const { next, data } = this.head;
+    this.head = next;
+    this.len -= 1;
+    return data;
   }
 
   /**
@@ -90,26 +85,31 @@ class List {
     }
 
     let idx = 0;
-    for (let value of this) {
-      idx++;
+    for (const value of this) { // eslint-disable-line no-restricted-syntax
+      idx += 1;
       if (idx === position) {
         return value;
       }
     }
+
+    return false;
+  }
+
+  /**
+   * Implement the iterator interface to make List iterable
+   * @return {*}
+   */
+  [Symbol.iterator]() {
+    let node = this.head;
+    return {
+      next() {
+        if (node) {
+          const { data } = node;
+          node = node.next;
+          return { value: data, done: false };
+        }
+        return { done: true };
+      },
+    };
   }
 }
-
-/**
- * Implement the iterator interface to make List iterable
- * @yields {*}
- */
-List.prototype[Symbol.iterator] = function* () {
-  let node = this.head;
-  for (let i = 0; i < this.length(); i++) {
-    yield node.data;
-    node = node.next;
-  }
-  return;
-};
-
-module.exports = List;
