@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "babel src -d lib",
+    "build": "babel src -d lib --ignore *.spec.js",
     "lint": "eslint src/**/*.js",
-    "test": "mocha src/**/*.spec.js --require babel-register",
+    "test": "mocha src/**/*.spec.js --require babel-polyfill --require babel-register",
     "test:coverage": "nyc npm test",
     "test:all": "testen"
   },
@@ -54,24 +54,28 @@
     ]
   },
   "babel": {
-    "ignore": ["**/*.spec.js"],
     "presets": [
-      ["env", {
-        "targets": {
-          "browsers": [
-            "> 0.5%",
-            "last 2 versions",
-            "Firefox ESR",
-            "not dead"
-          ],
-          "node": 4
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "> 0.5%",
+              "last 2 versions",
+              "Firefox ESR",
+              "not dead"
+            ],
+            "node": 4
+          }
         }
-      }]
+      ]
     ]
   },
   "eslintConfig": {
     "extends": "airbnb-base",
-    "plugins": ["mocha"],
+    "plugins": [
+      "mocha"
+    ],
     "env": {
       "mocha": true,
       "node": true,

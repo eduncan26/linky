@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import "babel-polyfill";
 import List from './list';
 import Stack from './stack';
 import Queue from './queue';
